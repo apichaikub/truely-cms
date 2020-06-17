@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost';
-import httpClient from '../../httpClient/apollo'
+import httpClient from './apollo.client'
 
-export const getProducts = () => httpClient.query({
+export const getProducts = () => httpClient.product.query({
   query: gql`
     {
       products {
