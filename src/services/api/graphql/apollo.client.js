@@ -4,12 +4,12 @@ import { request, onError } from '../../../helpers/graphql'
 
 export default {
   product: new ApolloClient({
-    uri: `http://localhost:5000/${ENDPOINT.PRODUCT}`,
+    uri: `${process.env.REACT_APP_API}${ENDPOINT.PRODUCT}`,
     request,
     onError,
   }),
   user: new ApolloClient({
-    uri: `http://localhost:5000/${ENDPOINT.USER}`,
+    uri: `${process.env.REACT_APP_API}${ENDPOINT.USER}`,
     request,
     onError,
   }),
