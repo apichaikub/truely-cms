@@ -1,7 +1,5 @@
-import request from './request'
-import onError from './onError'
+import customFetch from './customFetch'
 
 export {
-  request,
-  onError
+  customFetch
 }
