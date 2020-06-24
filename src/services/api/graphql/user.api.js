@@ -12,3 +12,17 @@ export const getUsers = () => httpClient.user.query({
     }
   `
 })
+
+export const getMe = () => httpClient.user.query({
+  query: gql`
+    {
+      me {
+        userId,
+        username,
+        role,
+        createdAt,
+        updatedAt
+      }
+    }
+  `
+})
