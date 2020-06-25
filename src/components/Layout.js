@@ -1,16 +1,6 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
 
-const Layout = (props) => {
-  const Content = props.children
-  const isLoggedIn = false
-  
-  if(!isLoggedIn) {
-    return (
-      <Redirect to="/login" />
-    )
-  }
-
+const Layout = ({ children: Content }) => {
   return (
     <div>
       <div>header</div>
