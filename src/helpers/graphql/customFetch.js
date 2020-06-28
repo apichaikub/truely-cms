@@ -22,7 +22,7 @@ const customFetch = (uri, options) => {
       })
       // if still unauthenticated, fource user to logout
       .catch(() => {
-        throw new Error('Logout')
+        storage.clearTokens(() => window.location = '/login')
       })
       // if retry success, set tokens to storage and return with a new token.
       .then((responseRefreshToken) => {

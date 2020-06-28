@@ -16,7 +16,8 @@ export const setRefreshToken = (refreshToken) => {
   return localStorage[STORAGE_NAME.ENUM.REFRESH_TOKEN] = refreshToken
 }
 
-export const clearTokens = () => {
+export const clearTokens = (callback) => {
   localStorage.removeItem(STORAGE_NAME.ENUM.ACCESS_TOKEN)
   localStorage.removeItem(STORAGE_NAME.ENUM.REFRESH_TOKEN)
+  callback && callback()
 }
