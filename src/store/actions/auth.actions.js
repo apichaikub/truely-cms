@@ -4,7 +4,7 @@ import { authContants } from '../constants'
 const { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } = authContants
 
 const authActions = {
-    login: ({ username, password }) => {
+    getTokens: ({ username, password }) => {
         const request = () => ({ type: LOGIN_REQUEST })
         const success = (payload) => ({ type: LOGIN_SUCCESS, payload })
         const failure = (payload) => ({ type: LOGIN_FAILURE, payload })
