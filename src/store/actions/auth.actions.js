@@ -1,13 +1,13 @@
 import serviceApi from '../../services/api'
 import { authContants } from '../constants'
 
-const { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } = authContants
+const { GET_TOKENS_REQUEST, GET_TOKENS_SUCCESS, GET_TOKENS_FAILURE } = authContants
 
 const authActions = {
     getTokens: ({ username, password }) => {
-        const request = () => ({ type: LOGIN_REQUEST })
-        const success = (payload) => ({ type: LOGIN_SUCCESS, payload })
-        const failure = (payload) => ({ type: LOGIN_FAILURE, payload })
+        const request = () => ({ type: GET_TOKENS_REQUEST })
+        const success = (payload) => ({ type: GET_TOKENS_SUCCESS, payload })
+        const failure = (payload) => ({ type: GET_TOKENS_FAILURE, payload })
 
         return async (dispatch) => {
             try {

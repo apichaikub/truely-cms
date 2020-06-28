@@ -1,6 +1,6 @@
 import { authContants } from '../constants'
 
-const { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } = authContants
+const { GET_TOKENS_REQUEST, GET_TOKENS_SUCCESS, GET_TOKENS_FAILURE } = authContants
 
 const initialState = {
   isLoading: false,
@@ -12,19 +12,19 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {  
   switch(action.type) {
-    case LOGIN_REQUEST:
+    case GET_TOKENS_REQUEST:
       return {
         ...state,
         isLoading: true,
       }
-    case LOGIN_SUCCESS:
+    case GET_TOKENS_SUCCESS:
       return {
         ...state,
         accessToken: action.payload.accessToken,
         refreshToken: action.payload.refreshToken,
         isLoading: false,
       }
-    case LOGIN_FAILURE:
+    case GET_TOKENS_FAILURE:
       return {
         ...state,
         isLoading: false,
