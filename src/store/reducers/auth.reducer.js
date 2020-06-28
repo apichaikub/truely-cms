@@ -4,7 +4,7 @@ const { GET_TOKENS_REQUEST, GET_TOKENS_SUCCESS, GET_TOKENS_FAILURE, SET_IS_LOGGE
 
 const initialState = {
   isLoading: false,
-  errorMessage: null,
+  error: null,
   accessToken: null,
   refreshToken: null,
   isLoggedIn: false
@@ -16,6 +16,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
+        error: null,
       }
     case GET_TOKENS_SUCCESS:
       return {
@@ -28,7 +29,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        errorMessage: action.payload.message,
+        error: action.payload.message,
       }
     case SET_IS_LOGGED_IN:
       return {

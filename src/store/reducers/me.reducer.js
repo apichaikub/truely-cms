@@ -4,7 +4,7 @@ const { GET_ME_REQUEST, GET_ME_SUCCESS, GET_ME_FAILURE } = meContants
 
 const initialState = {
   isLoading: false,
-  errorMessage: null,
+  error: null,
   userId: null,
   username: null,
   role: null,
@@ -16,6 +16,7 @@ const meReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
+        error: null,
       }
     case GET_ME_SUCCESS:
       return {
@@ -29,7 +30,7 @@ const meReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        errorMessage: action.payload.message,
+        error: action.payload.message,
       }
     default: 
       return state
