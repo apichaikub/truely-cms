@@ -5,7 +5,7 @@ import Login from './views/Login'
 import Products from './views/Products'
 import Users from './views/Users'
 
-const App = () => {
+const Routers = () => {
   return (
     <Router>
       <Switch>
@@ -18,4 +18,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Routers
