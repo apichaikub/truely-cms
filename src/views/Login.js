@@ -9,7 +9,7 @@ const Login = (props) => {
 
   useEffect(() => {
     dispatch(meActions.getMe())
-  }, [dispatch]);
+  }, [dispatch])
 
   return (
     <div className="App">
@@ -19,6 +19,7 @@ const Login = (props) => {
       </button>
       <pre>{JSON.stringify(auth)}</pre>
       <pre>{JSON.stringify(me)}</pre>
+      <pre>{JSON.stringify(process.env)}</pre>
     </div>
   )
 }
