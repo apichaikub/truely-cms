@@ -26,19 +26,7 @@ const customFetch = (uri, options) => {
       })
       // if retry success, set tokens to storage and return with a new token.
       .then((responseRefreshToken) => {
-        const {
-          data: {
-            results: {
-              accessToken,
-              refreshToken
-            }
-          }
-        } = responseRefreshToken;
-        
-        // TODO: use axios interceptor to set tokens to storage, they should not to be here.
-        storage.setAccessToken(accessToken)
-        storage.setRefreshToken(refreshToken)
-
+        const accessToken = responseRefreshToken.data.results.accessToken
         return accessToken
       })
 
