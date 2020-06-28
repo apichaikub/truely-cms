@@ -1,6 +1,6 @@
 import { authContants } from '../constants'
 
-const { GET_TOKENS_REQUEST, GET_TOKENS_SUCCESS, GET_TOKENS_FAILURE } = authContants
+const { GET_TOKENS_REQUEST, GET_TOKENS_SUCCESS, GET_TOKENS_FAILURE, SET_IS_LOGGED_IN } = authContants
 
 const initialState = {
   isLoading: false,
@@ -29,6 +29,11 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         errorMessage: action.payload.message,
+      }
+    case SET_IS_LOGGED_IN:
+      return {
+        ...state,
+        isLoggedIn: action.payload.isLoggedIn
       }
     default: 
       return state

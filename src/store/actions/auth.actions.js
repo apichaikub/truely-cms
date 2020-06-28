@@ -1,7 +1,7 @@
 import serviceApi from '../../services/api'
 import { authContants } from '../constants'
 
-const { GET_TOKENS_REQUEST, GET_TOKENS_SUCCESS, GET_TOKENS_FAILURE } = authContants
+const { GET_TOKENS_REQUEST, GET_TOKENS_SUCCESS, GET_TOKENS_FAILURE, SET_IS_LOGGED_IN } = authContants
 
 const authActions = {
     getTokens: ({ username, password }) => {
@@ -27,6 +27,15 @@ const authActions = {
             }
         }
     },
+
+    setIsLoggedIn: (isLoggedIn) => {
+        return {
+            type: SET_IS_LOGGED_IN,
+            payload: {
+                isLoggedIn: isLoggedIn
+            }
+        }
+    }
 }
 
 export default authActions
