@@ -1,4 +1,4 @@
-import { STORAGE_NAME } from '../../helpers/enum'
+import { STORAGE_NAME } from '../../enum'
 
 export const getAccessToken = () => {
   return localStorage[STORAGE_NAME.ENUM.ACCESS_TOKEN]
