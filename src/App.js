@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { BrowserRouter as Redirect } from "react-router-dom"
 import { meActions } from './store/actions'
+import { ROUTER_PATH } from './enum'
 import storage from './storages'
 import Routers from './Routers'
 
@@ -30,7 +31,7 @@ const App = () => {
 
   // if getting an error then redirect to login pages
   if(meState.error) {
-    return <Redirect to='/login' />
+    return <Redirect to={ROUTER_PATH.ENUM.LOGIN} />
   }
 
   return (

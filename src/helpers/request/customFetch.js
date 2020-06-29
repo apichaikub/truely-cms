@@ -2,6 +2,7 @@ import apiService from '../../services/api'
 import storage from '../../storages'
 import { getHeadersOAuth2 } from '.'
 import { getFinalResponse } from '../response'
+import { ROUTER_PATH } from '../../enum'
 
 const customFetch = (uri, options) => {
   // set authorization on header if access token is stored.
@@ -22,7 +23,7 @@ const customFetch = (uri, options) => {
       })
       // if still unauthenticated, fource user to logout
       .catch(() => {
-        storage.clearTokens(() => window.location = '/login')
+        storage.clearTokens(() => window.location = ROUTER_PATH.ENUM.LOGIN)
       })
       // if retry success, set tokens to storage and return with a new token.
       .then((responseRefreshToken) => {
