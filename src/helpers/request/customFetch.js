@@ -1,6 +1,6 @@
 import apiService from '../../services/api'
 import storage from '../../storages'
-import { getHeadersOAuth2 } from '../request'
+import { getHeadersOAuth2 } from '.'
 import { getFinalResponse } from '../response'
 
 const customFetch = (uri, options) => {
