@@ -4,6 +4,9 @@ import App from './App'
 import { Provider } from 'react-redux'
 import store from './store'
 import * as serviceWorker from './serviceWorker'
+import icons from './assets/icons'
+
+React.icons = icons
 
 ReactDOM.render(
   <React.StrictMode>
