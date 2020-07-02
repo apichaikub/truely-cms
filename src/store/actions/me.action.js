@@ -3,7 +3,7 @@ import { meContants } from '../constants'
 import { authActions } from './'
 
 const meActions = {
-    getMe: () => {
+    requestGetMe: () => {
         const request = () => ({ type: meContants.GET_ME_REQUEST })
         const success = (payload) => ({ type: meContants.GET_ME_SUCCESS, payload })
         const failure = (payload) => ({ type: meContants.GET_ME_FAILURE, payload })

@@ -13,12 +13,12 @@ const Login = (props) => {
       Login Page
       <br/>
       <br/>
-      <button onClick={() => dispatch(authActions.getTokens({ username: 'admin1', password: '123456' }))}>
+      <button onClick={() => dispatch(authActions.requestGetTokens({ username: 'admin1', password: '123456' }))}>
         Get Tokens
       </button>
       <br/>
       <br/>
-      <button onClick={() => dispatch(meActions.getMe())}>
+      <button onClick={() => dispatch(meActions.requestGetMe())}>
         Get Me
       </button>
       <br/>

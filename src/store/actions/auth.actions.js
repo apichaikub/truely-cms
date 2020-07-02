@@ -2,7 +2,7 @@ import serviceApi from '../../services/api'
 import { authContants } from '../constants'
 
 const authActions = {
-    getTokens: ({ username, password }) => {
+    requestGetTokens: ({ username, password }) => {
         const request = () => ({ type: authContants.GET_TOKENS_REQUEST })
         const success = (payload) => ({ type: authContants.GET_TOKENS_SUCCESS, payload })
         const failure = (payload) => ({ type: authContants.GET_TOKENS_FAILURE, payload })

@@ -19,7 +19,7 @@ const App = () => {
 
   useEffect(() => {
     if(isAuthenticatedBefore) {
-      dispatch(meActions.getMe())
+      dispatch(meActions.requestGetMe())
     }
   }, [isAuthenticatedBefore, dispatch])
 
