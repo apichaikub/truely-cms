@@ -14,8 +14,8 @@ const App = () => {
 
   // this user has already been authenticated and not logged in. by getting access token from local storage.
   // because every time page is refresh, states will be cleared. so, we have to get user info every time when app is opened.
-  // note: when get user info success `isLoggedIn` will be true
-  const isAuthenticatedBefore = storage.getAccessToken() && !authState.isLoggedIn
+  // note: when get user info success `loggedin` will be true
+  const isAuthenticatedBefore = storage.getAccessToken() && !authState.loggedin
 
   useEffect(() => {
     if(isAuthenticatedBefore) {
@@ -24,7 +24,7 @@ const App = () => {
   }, [isAuthenticatedBefore, dispatch])
 
   // display loading page if we still loading user informations
-  if(isAuthenticatedBefore || meState.isLoading) {
+  if(isAuthenticatedBefore || meState.loading) {
     return (
       <div>Loading...</div>
     )

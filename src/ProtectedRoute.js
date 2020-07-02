@@ -4,14 +4,14 @@ import { Route, Redirect } from 'react-router-dom'
 import { ROUTER_PATH } from './enum'
 
 const ProtectedRoute = ({ component: Component, roles, ...rest }) => {
-  const { isLoggedIn } = useSelector(state => state.auth)
+  const authState = useSelector(state => state.auth)
   const meState = useSelector(state => state.me)
 
-  if(!isLoggedIn) {
+  if(!authState.loggedin) {
     return <Redirect to={ROUTER_PATH.ENUM.LOGIN} />
   }
 
-  if(!roles.includes(meState.role)) {
+  if(!roles.includes(meState.data.role)) {
     return <Redirect to={ROUTER_PATH.ENUM.LOGIN} />
   }
 
