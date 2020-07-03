@@ -3,7 +3,7 @@ const authConstants = {
     GET_TOKENS_SUCCESS: "GET_TOKENS_SUCCESS",
     GET_TOKENS_FAILURE: "GET_TOKENS_FAILURE",
 
-    SET_IS_LOGGED_IN: "SET_IS_LOGGED_IN",
+    SET_LOGGEDIN: "SET_LOGGEDIN",
 }
 
 export default authConstants

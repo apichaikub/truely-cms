@@ -1,6 +1,6 @@
 import ApolloClient from 'apollo-boost'
 import ENDPOINT from './endpoint'
-import { customFetch } from '../../../helpers/graphql'
+import { customFetch } from '../../../helpers/request'
 
 const productClient = new ApolloClient({
   uri: `${process.env.REACT_APP_API}${ENDPOINT.PRODUCT}`,

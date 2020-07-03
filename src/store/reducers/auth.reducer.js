@@ -1,41 +1,43 @@
 import { authContants } from '../constants'
-
-const { GET_TOKENS_REQUEST, GET_TOKENS_SUCCESS, GET_TOKENS_FAILURE, SET_IS_LOGGED_IN } = authContants
+import { authTransform } from '../transforms'
 
 const initialState = {
-  isLoading: false,
+  loading: false,
   error: null,
-  accessToken: null,
-  refreshToken: null,
-  isLoggedIn: false
+  data: {},
+  loggedin: false, // use to check user is logged in the app
 }
 
-const authReducer = (state = initialState, action) => {  
+const authReducer = (state = initialState, action) => {
   switch(action.type) {
-    case GET_TOKENS_REQUEST:
+    case authContants.GET_TOKENS_REQUEST:
       return {
         ...state,
-        isLoading: true,
+        loading: true,
         error: null,
+        data: {},
       }
-    case GET_TOKENS_SUCCESS:
+
+    case authContants.GET_TOKENS_SUCCESS:
       return {
         ...state,
-        accessToken: action.payload.accessToken,
-        refreshToken: action.payload.refreshToken,
-        isLoading: false,
+        data: authTransform.tokens(action.payload),
+        loading: false,
       }
-    case GET_TOKENS_FAILURE:
+
+    case authContants.GET_TOKENS_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        loading: false,
         error: action.payload.message,
       }
-    case SET_IS_LOGGED_IN:
+
+    case authContants.SET_LOGGEDIN:
       return {
         ...state,
-        isLoggedIn: action.payload.isLoggedIn
+        loggedin: action.payload.loggedin
       }
+      
     default: 
       return state
   }

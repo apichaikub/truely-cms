@@ -2,13 +2,11 @@ import serviceApi from '../../services/api'
 import { meContants } from '../constants'
 import { authActions } from './'
 
-const { GET_ME_REQUEST, GET_ME_SUCCESS, GET_ME_FAILURE } = meContants
-
 const meActions = {
-    getMe: () => {
-        const request = () => ({ type: GET_ME_REQUEST })
-        const success = (payload) => ({ type: GET_ME_SUCCESS, payload })
-        const failure = (payload) => ({ type: GET_ME_FAILURE, payload })
+    requestGetMe: () => {
+        const request = () => ({ type: meContants.GET_ME_REQUEST })
+        const success = (payload) => ({ type: meContants.GET_ME_SUCCESS, payload })
+        const failure = (payload) => ({ type: meContants.GET_ME_FAILURE, payload })
 
         return async (dispatch) => {
             try {
@@ -19,14 +17,14 @@ const meActions = {
                 const payload = response.data.me
                 dispatch(success(payload))
 
-                // set `isLoggedIn` in auth state to `true`
-                dispatch(authActions.setIsLoggedIn(true))
+                // set `loggedin` in auth state to `true`
+                dispatch(authActions.setloggedin(true))
             } catch(error) {
                 const payload = {message: error.message}
                 dispatch(failure(payload))
 
-                // set `isLoggedIn` in auth state to `false`
-                dispatch(authActions.setIsLoggedIn(false))
+                // set `loggedin` in auth state to `false`
+                dispatch(authActions.setloggedin(false))
             }
         }
     },

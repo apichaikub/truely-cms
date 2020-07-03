@@ -1,37 +1,35 @@
 import { meContants } from '../constants'
-
-const { GET_ME_REQUEST, GET_ME_SUCCESS, GET_ME_FAILURE } = meContants
+import { meTransform } from '../transforms'
 
 const initialState = {
-  isLoading: false,
+  loading: false,
   error: null,
-  userId: null,
-  username: null,
-  role: null,
+  data: {},
 }
 
-const meReducer = (state = initialState, action) => {  
+const meReducer = (state = initialState, action) => {
   switch(action.type) {
-    case GET_ME_REQUEST:
+    case meContants.GET_ME_REQUEST:
       return {
         ...state,
-        isLoading: true,
+        loading: true,
         error: null,
       }
-    case GET_ME_SUCCESS:
+
+    case meContants.GET_ME_SUCCESS:
       return {
         ...state,
-        isLoading: false,
-        userId: action.payload.userId,
-        username: action.payload.username,
-        role: action.payload.role,
+        loading: false,
+        data: meTransform.info(action.payload)
       }
-    case GET_ME_FAILURE:
+
+    case meContants.GET_ME_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        loading: false,
         error: action.payload.message,
       }
+      
     default: 
       return state
   }
