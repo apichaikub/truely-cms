@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useForm, Controller } from 'react-hook-form'
-import { CButton, CCard, CCardBody, CCardGroup, CCol, CContainer, CForm, CInput, CInputGroup, CInputGroupPrepend, CInputGroupText, CRow, CFormText, CAlert } from '@coreui/react'
+import { CCard, CCardBody, CCardGroup, CCol, CContainer, CForm, CInput, CInputGroup, CInputGroupPrepend, CInputGroupText, CRow, CFormText, CAlert } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import BaseButton from '../components/Base/BaseButton'
 import { authActions } from '../store/actions'
 import { ROUTER_PATH } from '../enum'
 
@@ -11,9 +12,11 @@ const Login = () => {
   const dispatch = useDispatch()
   const authState = useSelector(state => state.auth)
   const { control, errors, handleSubmit } = useForm()
+  const [submited, setSubmit] = useState(false)
 
   // handler function
   const onSubmit = ({ username, password }, e) => {
+    setSubmit(true)
     dispatch(authActions.requestGetTokens({username, password}))
   }
 
@@ -82,7 +85,9 @@ const Login = () => {
                     </CInputGroup>
                     <CRow>
                       <CCol xs="12">
-                        <CButton type="submit" color="success" className="px-4 col-12">Login</CButton>
+                        <BaseButton type="submit" color="success" className="px-4 col-12" loading={submited}>
+                          Login
+                        </BaseButton>
                       </CCol>
                     </CRow>
                   </CForm>
