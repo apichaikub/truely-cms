@@ -1,5 +1,6 @@
 import serviceApi from '../../services/api'
 import { authContants } from '../constants'
+import { RESPONSE_KEY } from '../../enum'
 
 const authActions = {
     requestGetTokens: ({ username, password }) => {
@@ -16,8 +17,7 @@ const authActions = {
                     username: username,
                     password: password
                 })
-
-                const payload = response.data.results
+                const payload = response.data[RESPONSE_KEY.ENUM.RESULTS]
                 dispatch(success(payload))
             } catch(error) {
                 const payload = {message: error.message}

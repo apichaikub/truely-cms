@@ -2,7 +2,7 @@ import apiService from '../../services/api'
 import storage from '../../storages'
 import { getHeadersOAuth2 } from '.'
 import { getFinalResponse } from '../response'
-import { ROUTER_PATH } from '../../enum'
+import { ROUTER_PATH, RESPONSE_KEY } from '../../enum'
 
 const customFetch = (uri, options) => {
   // set authorization on header if access token is stored.
@@ -27,7 +27,8 @@ const customFetch = (uri, options) => {
       })
       // if retry success, set tokens to storage and return with a new token.
       .then((responseRefreshToken) => {
-        const accessToken = responseRefreshToken.data.results.accessToken
+        const { data } = responseRefreshToken;
+        const accessToken = data[RESPONSE_KEY.ENUM.RESULTS]?.accessToken
         return accessToken
       })
 
