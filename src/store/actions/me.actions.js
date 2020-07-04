@@ -1,6 +1,7 @@
 import serviceApi from '../../services/api'
 import { meContants } from '../constants'
-import { authActions } from './'
+import { authActions } from '.'
+import { RESPONSE_KEY } from '../../enum'
 
 const meActions = {
     requestGetMe: () => {
@@ -13,8 +14,7 @@ const meActions = {
                 dispatch(request())
 
                 const response = await serviceApi.getMe()
-
-                const payload = response.data.me
+                const payload = response[RESPONSE_KEY.ENUM.DATA]?.me
                 dispatch(success(payload))
 
                 // set `loggedin` in auth state to `true`

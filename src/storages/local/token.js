@@ -1,23 +1,25 @@
 import { STORAGE_NAME } from '../../enum'
 
-export const getAccessToken = () => {
-  return localStorage[STORAGE_NAME.ENUM.ACCESS_TOKEN]
-}
+const { ENUM: STORAGE } = STORAGE_NAME
 
-export const getRefreshToken = () => {
-  return localStorage[STORAGE_NAME.ENUM.REFRESH_TOKEN]
-}
+export const getAccessToken = () => (
+  localStorage[STORAGE.ACCESS_TOKEN]
+)
 
-export const setAccessToken = (accessToken) => {
-  return localStorage[STORAGE_NAME.ENUM.ACCESS_TOKEN] = accessToken
-}
+export const getRefreshToken = () => (
+  localStorage[STORAGE.REFRESH_TOKEN]
+)
 
-export const setRefreshToken = (refreshToken) => {
-  return localStorage[STORAGE_NAME.ENUM.REFRESH_TOKEN] = refreshToken
-}
+export const setAccessToken = (accessToken) => (
+  localStorage[STORAGE.ACCESS_TOKEN] = accessToken
+)
+
+export const setRefreshToken = (refreshToken) => (
+  localStorage[STORAGE.REFRESH_TOKEN] = refreshToken
+)
 
 export const clearTokens = (callback) => {
-  localStorage.removeItem(STORAGE_NAME.ENUM.ACCESS_TOKEN)
-  localStorage.removeItem(STORAGE_NAME.ENUM.REFRESH_TOKEN)
+  localStorage.removeItem(STORAGE.ACCESS_TOKEN)
+  localStorage.removeItem(STORAGE.REFRESH_TOKEN)
   callback && callback()
 }
