@@ -1,6 +1,7 @@
 import serviceApi from '../../services/api'
 import { authContants } from '../constants'
 import { RESPONSE_KEY } from '../../enum'
+import storage from '../../storages'
 
 const authActions = {
     requestGetTokens: ({ username, password }) => {
@@ -33,6 +34,14 @@ const authActions = {
                 loggedin: loggedin
             }
         }
+    },
+
+    logout: () => {
+      return (dispatch) => {
+        storage.clearTokens(() => (dispatch({
+          type: authContants.LOGOUT
+        })))
+      }
     }
 }
 

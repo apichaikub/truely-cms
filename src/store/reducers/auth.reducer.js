@@ -37,6 +37,12 @@ const authReducer = (state = initialState, action) => {
         ...state,
         loggedin: action.payload.loggedin
       }
+
+      case authContants.LOGOUT:
+        return {
+          ...state,
+          loggedin: false
+        }
       
     default: 
       return state
