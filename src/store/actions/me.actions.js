@@ -1,7 +1,6 @@
-// TODO: change file name to me.actions.js
 import serviceApi from '../../services/api'
 import { meContants } from '../constants'
-import { authActions } from './'
+import { authActions } from '.'
 import { RESPONSE_KEY } from '../../enum'
 
 const meActions = {
