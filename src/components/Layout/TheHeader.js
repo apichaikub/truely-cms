@@ -1,14 +1,16 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { CHeader, CToggler, CHeaderNav } from '@coreui/react'
 import TheHeaderDropdown from './TheHeaderDropdown'
+import { sidebarActions } from '../../store/actions'
 
 const TheHeader = () => {
-  const toggleSidebar = () => {
-    console.log('toggleSidebar')
-  }
+  const dispatch = useDispatch()
+  const uiState = useSelector(state => state.ui)
 
-  const toggleSidebarMobile = () => {
-    console.log('toggleSidebarMobile')
+  // handler function
+  const handleClickToggle = () => {
+    dispatch(sidebarActions.toggleShow(!uiState.sidebar.show))
   }
 
   return (
@@ -16,12 +18,12 @@ const TheHeader = () => {
       <CToggler
         inHeader
         className="ml-md-3 d-lg-none"
-        onClick={toggleSidebarMobile}
+        onClick={handleClickToggle}
       />
       <CToggler
         inHeader
         className="ml-3 d-md-down-none"
-        onClick={toggleSidebar}
+        onClick={handleClickToggle}
       />
 
       <CHeaderNav className="ml-auto px-3">
