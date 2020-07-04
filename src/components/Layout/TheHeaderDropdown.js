@@ -1,8 +1,12 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { CDropdown, CDropdownItem, CDropdownMenu, CDropdownToggle, CImg } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { authActions } from '../../store/actions'
 
 const TheHeaderDropdown = () => {
+  const dispatch = useDispatch()
+
   return (
     <CDropdown
       inNav
@@ -31,7 +35,7 @@ const TheHeaderDropdown = () => {
           <CIcon name="cil-user" className="mfe-2" />Profile
         </CDropdownItem>
         <CDropdownItem divider />
-        <CDropdownItem>
+        <CDropdownItem onClick={() => dispatch(authActions.logout())}>
           <CIcon name="cil-lock-locked" className="mfe-2" /> 
           Logout
         </CDropdownItem>
