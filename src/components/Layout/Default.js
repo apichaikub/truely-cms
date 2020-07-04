@@ -1,12 +1,19 @@
 import React from 'react'
+import TheHeader from './TheHeader'
+import TheSidebar from './TheSidebar'
+import TheFooter from './TheFooter'
 
 const Layout = ({ children: Content }) => {
   return (
-    <div>
-      <div>header</div>
-      <div>Sidebar</div>
-      <div>{ Content }</div>
-      <div>footer</div>
+    <div className="c-app c-default-layout">
+      <TheSidebar/>
+      <div className="c-wrapper">
+        <TheHeader/>
+        <div className="c-body">
+          { Content }
+        </div>
+        <TheFooter/>
+      </div>
     </div>
   )
 }
