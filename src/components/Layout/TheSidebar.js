@@ -4,6 +4,7 @@ import { CCreateElement, CSidebar, CSidebarBrand, CSidebarNav, CSidebarNavDivide
 import CIcon from '@coreui/icons-react'
 import navigation from './_nav' // sidebar nav config
 import { sidebarActions } from '../../store/actions'
+import storage from '../../storages'
 
 const TheSidebar = () => {
   const dispatch = useDispatch()
@@ -11,7 +12,9 @@ const TheSidebar = () => {
 
   // handler function
   const handleMinimizeChange = (value = false) => {
-    dispatch(sidebarActions.toggleMinimize(!value))
+    const minimize = !value;
+    dispatch(sidebarActions.toggleMinimize(minimize))
+    storage.setSidebarMinimize(minimize)
   }
 
   return (

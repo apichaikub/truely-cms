@@ -1,10 +1,13 @@
 import { uiContants } from '../constants'
+import storage from '../../storages'
 
 const initialState = {
   // sidebar on left side of the pages
   sidebar: {
-    show: true,
-    minimize: false,
+    // if value was not set in loacl storage, default as true
+    show: storage.getSidebarShow() ?? true,
+    // if value was not set in loacl storage, default as false
+    minimize: storage.getSidebarMinimize() ?? false,
   }
 }
 
