@@ -1,3 +1,4 @@
+// TODO: change file name to me.actions.js
 import serviceApi from '../../services/api'
 import { meContants } from '../constants'
 import { authActions } from './'

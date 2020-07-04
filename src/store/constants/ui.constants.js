@@ -1,0 +1,6 @@
+const uiConstants = {
+  SIDEBAR_TOGGLE_SHOW: "SIDEBAR_TOGGLE_SHOW",
+  SIDEBAR_TOGGLE_MINIMIZE: "SIDEBAR_TOGGLE_MINIMIZE",
+}
+
+export default uiConstants
