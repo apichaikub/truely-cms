@@ -1,10 +1,14 @@
 import { authContants } from '../constants'
 import { authTransforms } from '../transforms'
+import storage from '../../storages'
 
 const initialState = {
   loading: false,
   error: null,
-  data: {},
+  data: {
+    accessToken: storage.getAccessToken() ?? null,
+    refreshToken: storage.getRefreshToken() ?? null,
+  },
   loggedin: false, // use to check user is logged in the app
 }
 
