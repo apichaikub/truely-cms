@@ -1,9 +1,10 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { CHeader, CToggler, CHeaderNav } from '@coreui/react'
-import TheHeaderDropdown from './TheHeaderDropdown'
 import { sidebarActions } from '../../store/actions'
 import storage from '../../storages'
+import TheHeaderDropdown from './TheHeaderDropdown'
+import TheHeaderSub from './TheHeaderSub'
 
 const TheHeader = () => {
   const dispatch = useDispatch()
@@ -32,6 +33,8 @@ const TheHeader = () => {
       <CHeaderNav className="ml-auto px-3">
         <TheHeaderDropdown/>
       </CHeaderNav>
+
+      <TheHeaderSub/>
     </CHeader>
   )
 }
