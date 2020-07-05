@@ -5,6 +5,7 @@ const BaseTable = (props) => {
   const {
     items = [],
     fields = [],
+    loading = false,
     columnFilter = false,
     tableFilter = false,
     footer = false,
@@ -18,7 +19,7 @@ const BaseTable = (props) => {
   } = props
 
   const noItemsViewSlot = (
-    items.length === 0 
+    items.length === 0 && loading === true
     ? <div className="py-5 text-center">&nbsp;</div>
     : <div className="py-5 text-center">No results</div>
   )
@@ -27,6 +28,7 @@ const BaseTable = (props) => {
     <CDataTable 
         items={items}
         fields={fields}
+        loading={loading}
         columnFilter={columnFilter}
         tableFilter={tableFilter}
         footer={footer}
