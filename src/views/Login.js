@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useForm, Controller } from 'react-hook-form'
-import { CCard, CCardBody, CCardGroup, CCol, CContainer, CForm, CInput, CInputGroup, CInputGroupPrepend, CInputGroupText, CRow, CFormText, CAlert } from '@coreui/react'
+import { CCard, CCardBody, CCardGroup, CCol, CContainer, CForm, CInput, CInputGroup, CInputGroupPrepend, CInputGroupText, CRow, CAlert, CInvalidFeedback } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import BaseButton from '../components/Base/BaseButton'
 import { authActions } from '../store/actions'
@@ -55,12 +55,9 @@ const Login = () => {
                         control={control}
                         defaultValue="admin1"
                         rules={{ required: true }}
+                        invalid={!!errors.username}
                       />
-                      { errors.username && (
-                        <CInputGroup>
-                          <CFormText className="help-block">Please enter your username</CFormText>
-                        </CInputGroup>
-                      )}
+                      <CInvalidFeedback>Please enter your username</CInvalidFeedback>
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupPrepend>
@@ -76,12 +73,9 @@ const Login = () => {
                         control={control}
                         defaultValue="123456"
                         rules={{ required: true }}
+                        invalid={!!errors.password}
                       />
-                      { errors.password && (
-                        <CInputGroup>
-                          <CFormText className="help-block">Please enter your password</CFormText>
-                        </CInputGroup>
-                      )}
+                      <CInvalidFeedback>Please enter your password</CInvalidFeedback>
                     </CInputGroup>
                     <CRow>
                       <CCol xs="12">
