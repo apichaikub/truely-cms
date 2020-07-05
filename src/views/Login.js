@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
@@ -17,6 +17,12 @@ const Login = () => {
     setSubmit(true)
     dispatch(authActions.requestGetTokens({username, password}))
   }
+
+  useEffect(() => {
+    if(authState.error) {
+      setSubmit(false)
+    }
+  }, [authState])
 
   // if user is already logged in, then redirect to product pages
   if(authState.loggedin) {
