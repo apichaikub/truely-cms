@@ -16,16 +16,17 @@ const customFetch = (uri, options) => {
   .then((json) => {
     // check unauthenticated from response
     if(json && json.errors && json.errors[0] && json.errors[0].extensions.code === 'UNAUTHENTICATED') {
-      // if response with unauthenticated, call api to get new tokens.
+      // if response with unauthenticated, try to call api to get new tokens.
       const refreshPromise = apiService.getOAuth2Token({
         grant_type: 'refresh_token',
         refresh_token: storage.getRefreshToken()
       })
       // if still unauthenticated, fource user to logout
       .catch(() => {
+        // clear tokens in local storage and redirect to login pages
         storage.clearTokens(() => window.location = ROUTER_PATH.ENUM.LOGIN)
       })
-      // if retry success, set tokens to storage and return with a new token.
+      // if retry success return with a new access token.
       .then((responseRefreshToken) => {
         const { data } = responseRefreshToken;
         const accessToken = data[RESPONSE_KEY.ENUM.RESULTS]?.accessToken
