@@ -30,6 +30,7 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         list: {
+          ...state.list,
           loading: false,
           data: productTransform.list(action.payload),
         },
@@ -39,6 +40,7 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         list: {
+          ...state.list,
           loading: false,
           error: action.payload.message,
         },
