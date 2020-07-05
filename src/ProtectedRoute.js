@@ -18,8 +18,8 @@ const ProtectedRoute = ({ component: Component, roles, ...rest }) => {
   return (
     <Route { ...rest }
       render={
-        props => (
-          <Component { ...rest } { ...props } /> 
+        (props) => (
+          <Component { ...rest } { ...props } />
         )
       }
     />
