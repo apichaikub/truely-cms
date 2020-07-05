@@ -1,28 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import Layout from '../components/Layout'
 import TableProducts from '../components/Dump/TableProducts'
-import { fields, scopedSlots } from './Products.selector'
+import { tableFields, tableScopedSlots, mapList } from './Products.selector'
+import { productActions } from '../store/actions'
 
 const Products = () => {
-  const [productsData, setProductsData] = useState([])
-  const [loading, setLoading] = useState(true)
-  
-  setTimeout(() => {
-    const items = []
-    for(let i = 0; i < 200; i++) {
-      items.push({ id: (i+1), name: 'John Doe', created: "2020-01-01 15:30:69" })
-    }
-    setProductsData(items)
-    setLoading(false)
-  }, 3000)
+  const dispatch = useDispatch()
+  const productState = useSelector(state => state.product.list)
+
+  useEffect(() => {
+    dispatch(productActions.requestGetProducts())
+  }, [dispatch])
 
   return (
     <Layout>
       <TableProducts
-        items={productsData}
-        fields={fields}
-        scopedSlots={scopedSlots}
-        loading={loading}
+        items={mapList(productState.data)}
+        fields={tableFields}
+        scopedSlots={tableScopedSlots}
+        loading={productState.loading}
       />
     </Layout>
   )

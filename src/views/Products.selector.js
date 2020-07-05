@@ -2,29 +2,36 @@ import React from 'react'
 import { CButtonGroup } from '@coreui/react'
 import BaseButton from '../components/Base/BaseButton'
 
-export const fields = [
+export const TABLE_KEYS = Object.freeze({
+  ID: 'id',
+  NAME: 'name',
+  CREATED: 'created',
+  ACTION: 'action',
+})
+
+export const tableFields = [
   {
-    key: 'id',
+    key: TABLE_KEYS.ID,
     label: 'Product Id',
-    _style: { width: '200px' },
+    _style: { width: '350px' },
     sorter: true,
     filter: true
   },
   {
-    key: 'name',
+    key: TABLE_KEYS.NAME,
     label: 'Product Name',
     sorter: true,
     filter: true
   },
   {
-    key: 'created',
+    key: TABLE_KEYS.CREATED,
     label: 'Created At',
     _style: { width: '250px' },
     sorter: false,
     filter: false
   },
   {
-    key: 'action',
+    key: TABLE_KEYS.ACTION,
     label: '',
     _style: { width: '150px' },
     sorter: false,
@@ -32,8 +39,8 @@ export const fields = [
   }
 ]
 
-export const scopedSlots = {
-  action: (item, index) => (
+export const tableScopedSlots = {
+  [TABLE_KEYS.ACTION]: (item, index) => (
     <td className="px-2">
       <CButtonGroup>
         <BaseButton
@@ -52,3 +59,11 @@ export const scopedSlots = {
     </td>
   )
 }
+
+export const mapList = (list) => (
+  list.map((item) => ({
+    [TABLE_KEYS.ID]: item.productId,
+    [TABLE_KEYS.NAME]: item.name,
+    [TABLE_KEYS.CREATED]: item.createdAt,
+  }))
+)
