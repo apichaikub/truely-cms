@@ -2,8 +2,8 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { CCreateElement, CSidebar, CSidebarBrand, CSidebarNav, CSidebarNavDivider, CSidebarNavTitle, CSidebarMinimizer, CSidebarNavDropdown, CSidebarNavItem } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import navigation from './_nav' // sidebar nav config
 import { sidebarActions } from '../../store/actions'
+import navigation from './_navigation'
 import storage from '../../storages'
 
 const TheSidebar = () => {
