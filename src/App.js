@@ -11,7 +11,7 @@ const App = () => {
   const authState = useSelector(state => state.auth)
   const meState = useSelector(state => state.me)
 
-  // this user has already been authenticated and not logged in. by getting access token from local storage.
+  // this user has already been authenticated and not logged in. by getting access token from store `state.auth`.
   // because every time page is refresh, states will be cleared. so, we have to get user info every time when app is opened.
   // note: when get user info success `loggedin` will be true
   const { data: { accessToken }, loggedin } = authState
