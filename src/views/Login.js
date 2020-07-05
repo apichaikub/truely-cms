@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
-import FormLogin from '../components/Dump/FormLogin'
 import { authActions } from '../store/actions'
 import { ROUTER_PATH } from '../enum'
+import FormLogin from '../components/Dump/FormLogin'
 
 const Login = () => {
   const dispatch = useDispatch()
