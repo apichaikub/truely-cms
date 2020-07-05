@@ -20,7 +20,7 @@ const FormLogin = ({ authState, control, errors, submited, onSubmit }) => (
   <div className="c-app c-default-layout flex-row align-items-center">
     <CContainer>
       <CRow className="justify-content-center">
-        <CCol md="8">
+        <CCol md="6">
           <CCardGroup>
             <CCard className="p-4">
               <CCardBody>
@@ -77,6 +77,12 @@ const FormLogin = ({ authState, control, errors, submited, onSubmit }) => (
               </CCardBody>
             </CCard>
           </CCardGroup>
+        </CCol>
+      </CRow>
+      <CRow className="justify-content-center text-center mt-4">
+        <CCol md="6">
+          <span className="mr-1">Developed by</span>
+          <a href="https://apichai.me" target="_blank" rel="noopener noreferrer">Apichai (Chai) Densamute</a>
         </CCol>
       </CRow>
     </CContainer>
