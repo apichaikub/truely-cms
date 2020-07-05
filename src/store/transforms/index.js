@@ -1,10 +1,9 @@
-// TODO: add `s` from `transform` to `transforms`
-import authTransform from './auth.transform'
-import meTransform from './me.transform'
-import productTransform from './product.transform'
+import authTransforms from './auth.transforms'
+import meTransforms from './me.transforms'
+import productTransforms from './product.transforms'
 
 export {
-  authTransform,
-  meTransform,
-  productTransform,
+  authTransforms,
+  meTransforms,
+  productTransforms,
 }

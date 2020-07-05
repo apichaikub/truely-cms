@@ -1,4 +1,5 @@
 import React from 'react'
+import { CContainer } from '@coreui/react'
 import TheHeader from './TheHeader'
 import TheSidebar from './TheSidebar'
 import TheFooter from './TheFooter'
@@ -9,8 +10,12 @@ const Layout = ({ children: Content }) => {
       <TheSidebar/>
       <div className="c-wrapper">
         <TheHeader/>
-        <div className="c-body px-3">
-          { Content }
+        <div className="c-body">
+          <main className="c-main">
+            <CContainer fluid>
+              { Content }
+            </CContainer>
+          </main>
         </div>
         <TheFooter/>
       </div>

@@ -1,11 +1,15 @@
 import { authContants } from '../constants'
-import { authTransform } from '../transforms'
+import { authTransforms } from '../transforms'
+import storage from '../../storages'
 
 const initialState = {
   loading: false,
   error: null,
-  data: {},
   loggedin: false, // use to check user is logged in the app
+  data: {
+    accessToken: storage.getAccessToken() ?? null,
+    refreshToken: storage.getRefreshToken() ?? null,
+  },
 }
 
 const authReducer = (state = initialState, action) => {
@@ -21,7 +25,7 @@ const authReducer = (state = initialState, action) => {
     case authContants.GET_TOKENS_SUCCESS:
       return {
         ...state,
-        data: authTransform.tokens(action.payload),
+        data: authTransforms.tokens(action.payload),
         loading: false,
       }
 
@@ -41,7 +45,8 @@ const authReducer = (state = initialState, action) => {
       case authContants.LOGOUT:
         return {
           ...state,
-          loggedin: false
+          loggedin: false,
+          data: {},
         }
       
     default: 
