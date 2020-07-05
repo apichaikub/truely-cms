@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { useForm, Controller } from 'react-hook-form'
-import { CCard, CCardBody, CCardGroup, CCol, CContainer, CForm, CInput, CInputGroup, CInputGroupPrepend, CInputGroupText, CRow, CAlert, CInvalidFeedback } from '@coreui/react'
+import { useForm } from 'react-hook-form'
+import { CCard, CCardBody, CCardGroup, CCol, CContainer, CForm, CInputGroup, CInputGroupPrepend, CInputGroupText, CRow, CAlert } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import BaseButton from '../components/Base/BaseButton'
+import BaseInput from '../components/Base/BaseInput'
 import { authActions } from '../store/actions'
 import { ROUTER_PATH } from '../enum'
 
@@ -15,7 +16,7 @@ const Login = () => {
   const [submited, setSubmit] = useState(false)
 
   // handler function
-  const onSubmit = ({ username, password }, e) => {
+  const onSubmit = ({ username, password }) => {
     setSubmit(true)
     dispatch(authActions.requestGetTokens({username, password}))
   }
@@ -47,17 +48,16 @@ const Login = () => {
                           <CIcon name="cil-user" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <Controller
+                      <BaseInput
                         type="text"
-                        placeholder="Username"
-                        as={CInput}
                         name="username"
-                        control={control}
+                        placeholder="Username"
                         defaultValue="admin1"
-                        rules={{ required: true }}
+                        control={control}
+                        rules={{required: true}}
                         invalid={!!errors.username}
+                        invalidMessage="Please enter your username"
                       />
-                      <CInvalidFeedback>Please enter your username</CInvalidFeedback>
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupPrepend>
@@ -65,17 +65,16 @@ const Login = () => {
                           <CIcon name="cil-lock-locked" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <Controller
+                      <BaseInput
                         type="password"
-                        placeholder="Password"
-                        as={CInput}
                         name="password"
-                        control={control}
+                        placeholder="Password"
                         defaultValue="123456"
-                        rules={{ required: true }}
+                        control={control}
+                        rules={{required: true}}
                         invalid={!!errors.password}
+                        invalidMessage="Please enter your password"
                       />
-                      <CInvalidFeedback>Please enter your password</CInvalidFeedback>
                     </CInputGroup>
                     <CRow>
                       <CCol xs="12">
