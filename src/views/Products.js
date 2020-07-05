@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { productSelector } from './Products.selector'
+import { productActions } from '../store/actions'
 import Layout from '../components/Layout'
 import TableProducts from '../components/Dump/TableProducts'
-import { tableFields, tableScopedSlots, mapList } from './Products.selector'
-import { productActions } from '../store/actions'
 
 const Products = () => {
   const dispatch = useDispatch()
   const productState = useSelector(state => state.product.list)
+  const { tableItems, tableFields, tableScopedSlots, tableLoading } = productSelector(productState)
 
   useEffect(() => {
     dispatch(productActions.requestGetProducts())
@@ -16,10 +17,10 @@ const Products = () => {
   return (
     <Layout>
       <TableProducts
-        items={mapList(productState.data)}
+        items={tableItems}
         fields={tableFields}
         scopedSlots={tableScopedSlots}
-        loading={productState.loading}
+        loading={tableLoading}
       />
     </Layout>
   )

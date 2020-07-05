@@ -60,10 +60,19 @@ export const tableScopedSlots = {
   )
 }
 
-export const mapList = (list) => (
-  list.map((item) => ({
+export const mappingItems = (items = []) => {
+  return items.map((item) => ({
     [TABLE_KEYS.ID]: item.productId,
     [TABLE_KEYS.NAME]: item.name,
     [TABLE_KEYS.CREATED]: item.createdAt,
   }))
-)
+}
+
+export const productSelector = ({ data = [], loading = false }) => {
+  return {
+    tableItems: mappingItems(data),
+    tableFields,
+    tableScopedSlots,
+    tableLoading: loading,
+  }
+}
