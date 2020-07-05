@@ -1,4 +1,9 @@
 // it's bugs for coreui, solved by set this class globally
 .p-0false {
-    padding: 0;
+  padding: 0;
+}
+
+// if `.modal-body` was not exist in modal then set `.modal.footer` border to none.
+.modal-header + .modal-footer {
+  border: none;
 }

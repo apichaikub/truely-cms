@@ -4,8 +4,9 @@ import { TABLE_PRODUCT_FIELD } from '../../enum'
 import BaseTable from '../Base/BaseTable'
 import BaseButton from '../Base/BaseButton'
 
-const TableProducts = ({ loading, items }) => (
-  <BaseTable
+const TableProducts = ({ loading, items, onClickedView = () => {}, onClickedDelete = () => {} }) => {
+  return (
+    <BaseTable
       loading={loading}
       items={items}
       fields={[
@@ -44,12 +45,14 @@ const TableProducts = ({ loading, items }) => (
               <BaseButton
                 color="info"
                 size="sm"
+                onClick={(e) => onClickedView(item[TABLE_PRODUCT_FIELD.ENUM.ID], index, e)}
               >
                 View
               </BaseButton>
               <BaseButton
                 color="danger"
                 size="sm"
+                onClick={(e) => onClickedDelete(item[TABLE_PRODUCT_FIELD.ENUM.ID], index, e)}
               >
                 Delete
               </BaseButton>
@@ -62,7 +65,8 @@ const TableProducts = ({ loading, items }) => (
       sorter
       itemsPerPageSelect
       pagination
-  />
-)
+    />
+  )
+}
 
 export default TableProducts
