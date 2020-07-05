@@ -1,5 +1,5 @@
 import { meContants } from '../constants'
-import { meTransform } from '../transforms'
+import { meTransforms } from '../transforms'
 
 const initialState = {
   loading: false,
@@ -20,7 +20,7 @@ const meReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        data: meTransform.info(action.payload)
+        data: meTransforms.info(action.payload)
       }
 
     case meContants.GET_ME_FAILURE:

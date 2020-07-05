@@ -1,5 +1,5 @@
 import { productContants } from '../constants'
-import { productTransform } from '../transforms'
+import { productTransforms } from '../transforms'
 
 const initialState = {
   list: {
@@ -32,7 +32,7 @@ const productReducer = (state = initialState, action) => {
         list: {
           ...state.list,
           loading: false,
-          data: productTransform.list(action.payload),
+          data: productTransforms.list(action.payload),
         },
       }
 

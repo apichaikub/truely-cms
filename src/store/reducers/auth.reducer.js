@@ -1,5 +1,5 @@
 import { authContants } from '../constants'
-import { authTransform } from '../transforms'
+import { authTransforms } from '../transforms'
 
 const initialState = {
   loading: false,
@@ -21,7 +21,7 @@ const authReducer = (state = initialState, action) => {
     case authContants.GET_TOKENS_SUCCESS:
       return {
         ...state,
-        data: authTransform.tokens(action.payload),
+        data: authTransforms.tokens(action.payload),
         loading: false,
       }
 
