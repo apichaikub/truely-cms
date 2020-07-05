@@ -5,11 +5,11 @@ import storage from '../../storages'
 const initialState = {
   loading: false,
   error: null,
+  loggedin: false, // use to check user is logged in the app
   data: {
     accessToken: storage.getAccessToken() ?? null,
     refreshToken: storage.getRefreshToken() ?? null,
   },
-  loggedin: false, // use to check user is logged in the app
 }
 
 const authReducer = (state = initialState, action) => {
@@ -45,7 +45,8 @@ const authReducer = (state = initialState, action) => {
       case authContants.LOGOUT:
         return {
           ...state,
-          loggedin: false
+          loggedin: false,
+          data: {},
         }
       
     default: 
