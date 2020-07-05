@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { productSelector } from './Products.selector'
 import { productActions } from '../store/actions'
+import { mapTable } from '../helpers/table'
+import { TABLE_PRODUCT_POINTER } from '../enum'
 import Layout from '../components/Layout'
 import TableProducts from '../components/Dump/TableProducts'
 
 const Products = () => {
   const dispatch = useDispatch()
   const productState = useSelector(state => state.product.list)
-  const { tableItems, tableFields, tableScopedSlots, tableLoading } = productSelector(productState)
 
   useEffect(() => {
     dispatch(productActions.requestGetProducts())
@@ -17,10 +17,8 @@ const Products = () => {
   return (
     <Layout>
       <TableProducts
-        items={tableItems}
-        fields={tableFields}
-        scopedSlots={tableScopedSlots}
-        loading={tableLoading}
+        loading={productState.loading}
+        items={mapTable(productState.data, TABLE_PRODUCT_POINTER.ENUM)}
       />
     </Layout>
   )
