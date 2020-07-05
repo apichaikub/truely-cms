@@ -4,7 +4,7 @@ import logoNegativeSmall from './logo-negative-small'
 import {
   cilLockLocked,
   cilUser,
-  cil3d
+  cil3d,
 } from '@coreui/icons'
 
 const icons = {

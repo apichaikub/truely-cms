@@ -5,7 +5,7 @@ import { meActions } from './store/actions'
 import { ROUTER_PATH } from './enum'
 import storage from './storages'
 import Routers from './Routers'
-import './scss/style.scss';
+import './assets/scss/style.scss'
 
 const App = () => {
   const dispatch = useDispatch()

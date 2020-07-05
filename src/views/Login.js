@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { useForm, Controller } from 'react-hook-form'
-import { CButton, CCard, CCardBody, CCardGroup, CCol, CContainer, CForm, CInput, CInputGroup, CInputGroupPrepend, CInputGroupText, CRow, CFormText, CAlert } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+import { useForm } from 'react-hook-form'
+import FormLogin from '../components/Dump/FormLogin'
 import { authActions } from '../store/actions'
 import { ROUTER_PATH } from '../enum'
 
@@ -11,9 +10,11 @@ const Login = () => {
   const dispatch = useDispatch()
   const authState = useSelector(state => state.auth)
   const { control, errors, handleSubmit } = useForm()
+  const [submited, setSubmit] = useState(false)
 
   // handler function
-  const onSubmit = ({ username, password }, e) => {
+  const onSubmit = ({ username, password }) => {
+    setSubmit(true)
     dispatch(authActions.requestGetTokens({username, password}))
   }
 
@@ -23,76 +24,13 @@ const Login = () => {
   }
 
   return (
-    <div className="c-app c-default-layout flex-row align-items-center">
-      <CContainer>
-        <CRow className="justify-content-center">
-          <CCol md="8">
-            <CCardGroup>
-              <CCard className="p-4">
-                <CCardBody>
-                  <CForm onSubmit={handleSubmit(onSubmit)}>
-                    <h1>Truely - CMS</h1>
-                    <p className="text-muted">if you don't have an account please contact an admin.</p>
-                    { authState.error && (
-                      <CAlert className="py-3 mt-2" color="danger">
-                        Username or password is incorrect.
-                      </CAlert>
-                    )}
-                    <CInputGroup className="mb-3">
-                      <CInputGroupPrepend>
-                        <CInputGroupText>
-                          <CIcon name="cil-user" />
-                        </CInputGroupText>
-                      </CInputGroupPrepend>
-                      <Controller
-                        type="text"
-                        placeholder="Username"
-                        as={CInput}
-                        name="username"
-                        control={control}
-                        defaultValue="admin1"
-                        rules={{ required: true }}
-                      />
-                      { errors.username && (
-                        <CInputGroup>
-                          <CFormText className="help-block">Please enter your username</CFormText>
-                        </CInputGroup>
-                      )}
-                    </CInputGroup>
-                    <CInputGroup className="mb-4">
-                      <CInputGroupPrepend>
-                        <CInputGroupText>
-                          <CIcon name="cil-lock-locked" />
-                        </CInputGroupText>
-                      </CInputGroupPrepend>
-                      <Controller
-                        type="password"
-                        placeholder="Password"
-                        as={CInput}
-                        name="password"
-                        control={control}
-                        defaultValue="123456"
-                        rules={{ required: true }}
-                      />
-                      { errors.password && (
-                        <CInputGroup>
-                          <CFormText className="help-block">Please enter your password</CFormText>
-                        </CInputGroup>
-                      )}
-                    </CInputGroup>
-                    <CRow>
-                      <CCol xs="12">
-                        <CButton type="submit" color="success" className="px-4 col-12">Login</CButton>
-                      </CCol>
-                    </CRow>
-                  </CForm>
-                </CCardBody>
-              </CCard>
-            </CCardGroup>
-          </CCol>
-        </CRow>
-      </CContainer>
-    </div>
+    <FormLogin
+      authState={authState}
+      control={control}
+      errors={errors}
+      submited={submited}
+      onSubmit={handleSubmit(onSubmit)}
+    />
   )
 }
 

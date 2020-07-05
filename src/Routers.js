@@ -16,7 +16,7 @@ const Routers = () => {
         <Route exact path={ROUTER.HOME} component={Login} />
         <Route exact path={ROUTER.LOGIN} component={Login} />
         <ProtectedRoute exact path={ROUTER.PRODUCTS} component={Products} roles={[ROLE.ADMIN]} />
-        <ProtectedRoute exact path={ROUTER.USERS} component={Users} roles={[ROLE.ADMIN]}/>
+        <ProtectedRoute exact path={ROUTER.USERS} component={Users} roles={[ROLE.ADMIN]} />
       </Switch>
     </Router>
   )

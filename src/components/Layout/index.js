@@ -9,7 +9,7 @@ const Layout = ({ children: Content }) => {
       <TheSidebar/>
       <div className="c-wrapper">
         <TheHeader/>
-        <div className="c-body">
+        <div className="c-body px-3">
           { Content }
         </div>
         <TheFooter/>
