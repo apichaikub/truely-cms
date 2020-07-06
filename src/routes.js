@@ -1,39 +1,43 @@
-import { ROUTER_PATH, ROLE_USER } from './enum'
+import { ROUTER_PATH, ROLE_USER, META_ROUTE } from './enum'
 import Login from './views/Login'
 import Products from './views/Products'
 import Users from './views/Users'
 
+const { ENUM: PATH } = ROUTER_PATH
+const { ENUM: ROLE } = ROLE_USER
+const { ENUM: META } = META_ROUTE
+
 export default [
   {
-    path: ROUTER_PATH.ENUM.HOME,
+    path: PATH.HOME,
     name: 'Home',
     exact: true,
     component: Login,
   },
   {
-    path: ROUTER_PATH.ENUM.LOGIN,
+    path: PATH.LOGIN,
     name: 'Login',
     exact: true,
     component: Login,
   },
   {
-    path: ROUTER_PATH.ENUM.PRODUCTS,
+    path: PATH.PRODUCTS,
     name: 'Products',
     exact: true,
     component: Products,
     meta: {
-      requiredAuth: true,
-      roles: [ROLE_USER.ENUM.ADMIN],
+      [META.REQUIRED_AUTH]: true,
+      [META.ROLES]: [ROLE.ADMIN],
     },
   },
   {
-    path: ROUTER_PATH.ENUM.USERS,
+    path: PATH.USERS,
     name: 'Users',
     exact: true,
     component: Users,
     meta: {
-      requiredAuth: true,
-      roles: [ROLE_USER.ENUM.ADMIN],
+      [META.REQUIRED_AUTH]: true,
+      [META.ROLES]: [ROLE.ADMIN],
     },
   },
 ]
