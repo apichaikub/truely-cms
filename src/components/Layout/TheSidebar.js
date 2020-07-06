@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { CCreateElement, CSidebar, CSidebarBrand, CSidebarNav, CSidebarNavDivider, CSidebarNavTitle, CSidebarMinimizer, CSidebarNavDropdown, CSidebarNavItem } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { sidebarActions } from '../../store/actions'
-import navigation from './_navigation'
+import navigation from '../../navigation'
 import storage from '../../storages'
 
 const TheSidebar = () => {

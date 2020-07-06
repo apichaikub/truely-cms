@@ -3,6 +3,7 @@ export const ROUTER_PATH = Object.freeze({
     HOME: "/",
     LOGIN: "/login",
     PRODUCTS: '/products',
+    PRODUCT_CREATE: '/products/create',
     USERS: '/users',
   },
   get values() {

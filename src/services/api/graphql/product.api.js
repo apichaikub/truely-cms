@@ -19,3 +19,34 @@ export const getProducts = () => httpClient.product.query({
     }
   `
 })
+
+export const addProducts = (params) => {
+  const {
+    name,
+    detail,
+    rating,
+  } = params
+
+  const mutation = gql`
+    mutation {
+      createProduct (
+        data: [{
+          name: "${name}",
+          detail: "${detail}",
+          specifications: [],
+          rating: ${rating},
+          imageSmall: null,
+          imageMedium: null,
+          imageLarge: null,
+        }]
+      )
+      {
+        products {
+          productId
+        }
+      }
+    }
+  `;
+
+  return httpClient.product.mutate({ mutation })
+}

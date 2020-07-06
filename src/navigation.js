@@ -1,4 +1,4 @@
-import { ROUTER_PATH } from '../../enum'
+import { ROUTER_PATH } from './enum'
 
 const { ENUM: ROUTER } = ROUTER_PATH
 
@@ -24,7 +24,7 @@ export default [
       {
         _tag: 'CSidebarNavItem',
         name: 'Create',
-        to: '/products/create',
+        to: ROUTER.PRODUCT_CREATE,
       },
     ],
   },

@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { BrowserRouter as Redirect } from "react-router-dom"
+import { BrowserRouter as Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { ROUTER_PATH, META_ROUTE } from './enum'
 import { meActions } from './store/actions'
-import { ROUTER_PATH } from './enum'
-import Routers from './Routers'
+import routes from './routes'
+import ProtectedRoute from './ProtectedRoute'
 import './assets/scss/style.scss'
+
+const { ENUM: PATH } = ROUTER_PATH
+const { ENUM: META } = META_ROUTE
 
 const App = () => {
   const dispatch = useDispatch()
@@ -32,11 +37,19 @@ const App = () => {
 
   // if getting an error then redirect to login pages
   if(meState.error) {
-    return <Redirect to={ROUTER_PATH.ENUM.LOGIN} />
+    return <Redirect to={PATH.LOGIN} />
   }
 
   return (
-    <Routers/>
+    <Router>
+      <Switch>
+        {routes.map(({ meta = {}, ...rest }, index) => (
+          meta[META.REQUIRED_AUTH] === true
+          ? <ProtectedRoute key={index} meta={meta} {...rest} />
+          : <Route key={index} {...rest} />
+        ))}
+      </Switch>
+    </Router>
   )
 }
 

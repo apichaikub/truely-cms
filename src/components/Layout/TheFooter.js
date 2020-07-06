@@ -3,7 +3,7 @@ import { CFooter } from '@coreui/react'
 
 const TheFooter = () => {
   return (
-    <CFooter fixed={false}>
+    <CFooter fixed={true}>
       <div>
         <span className="ml-1">
           &copy;

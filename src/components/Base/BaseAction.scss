@@ -1,0 +1,7 @@
+@import "../../assets/scss/variables";
+
+.base-action {
+  border-top: solid 1px;
+  border-top-color: var(--secondary);
+  border-top-color: $color-secondary;
+}
