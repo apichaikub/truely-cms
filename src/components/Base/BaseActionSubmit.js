@@ -1,9 +1,9 @@
 import React from 'react'
 import BaseAction from './BaseAction'
 import BaseButton from './BaseButton'
-import './BaseActionCreate.scss'
+import './BaseActionSubmit.scss'
 
-const FormProductCreate = ({ loading, disabled, onClickSubmit = () => {}, onClickCancel = () => {} }) => {
+const BaseActionSubmit = ({ loading, disabled, onClickSubmit = () => {}, onClickCancel = () => {} }) => {
   return (
     <div className="base-action-create">
         <BaseAction>
@@ -31,4 +31,4 @@ const FormProductCreate = ({ loading, disabled, onClickSubmit = () => {}, onClic
   )
 }
 
-export default FormProductCreate
+export default BaseActionSubmit

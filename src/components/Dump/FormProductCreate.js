@@ -8,7 +8,7 @@ import {
   CTextarea,
 } from '@coreui/react'
 import BaseInput from '../Base/BaseInput'
-import BaseActionCreate from '../Base/BaseActionCreate'
+import BaseActionSubmit from '../Base/BaseActionSubmit'
 
 const FormProductCreate = ({ control, errors, formState, onSubmit, onCancel }) => {
   return (
@@ -50,7 +50,7 @@ const FormProductCreate = ({ control, errors, formState, onSubmit, onCancel }) =
               rules={{required: true}}
             />
           </CFormGroup>
-          <BaseActionCreate
+          <BaseActionSubmit
             loading={formState.isValid && formState.isSubmitted}
             disabled={!formState.isDirty}
             onClickCancel={onCancel}
