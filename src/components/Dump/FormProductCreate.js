@@ -5,31 +5,36 @@ import {
   CRow,
   CFormGroup,
   CLabel,
-  CInput,
   CTextarea,
+  CButton
 } from '@coreui/react'
+import BaseInput from '../Base/BaseInput'
 import BaseActionCreate from '../Base/BaseActionCreate'
 
-const FormProductCreate = () => {
-  const handleClickCreated = () => {
-    console.log('handleClickCreated')
-  }
-
-  const handleClickCanceled = () => {
-    console.log('handleClickCanceled')
+const FormProductCreate = ({ control, errors, formState, reset, onSubmit }) => {
+  const handleClickCancel = () => {
+    reset({
+      name: "",
+      rating: "",
+    })
   }
 
   return (
     <CRow>
       <CCol>
-        <CForm action="" method="post">
+        <CForm onSubmit={onSubmit}>
           <CFormGroup>
             <CLabel htmlFor="nf-name">Product Name</CLabel>
-            <CInput
-              type="text"
+            <BaseInput
               id="nf-name"
+              type="text"
               name="name"
               autoComplete="off"
+              defaultValue=""
+              control={control}
+              rules={{required: true}}
+              invalid={!!errors.name}
+              invalidMessage="This field is required"
             />
           </CFormGroup>
           <CFormGroup>
@@ -42,17 +47,22 @@ const FormProductCreate = () => {
           </CFormGroup>
           <CFormGroup>
             <CLabel htmlFor="nf-rating">Rating</CLabel>
-            <CInput
-              type="number"
+            <BaseInput
               id="nf-rating"
+              type="number"
               name="rating"
               min="0"
               max="5"
+              defaultValue=""
+              control={control}
+              rules={{required: true}}
             />
           </CFormGroup>
+          <CButton type="submit">Submit</CButton>
           <BaseActionCreate
-            onClickCreated={handleClickCreated}
-            onClickCancel={handleClickCanceled}
+            loading={formState.isValid && formState.isSubmitted}
+            disabled={!formState.isDirty}
+            onClickCancel={handleClickCancel}
           />
         </CForm>
       </CCol>

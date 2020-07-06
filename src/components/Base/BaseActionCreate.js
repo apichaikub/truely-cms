@@ -3,18 +3,23 @@ import BaseAction from './BaseAction'
 import BaseButton from './BaseButton'
 import './BaseActionCreate.scss'
 
-const FormProductCreate = ({ onClickCreated = () => {}, onClickCancel = () => {} }) => {
+const FormProductCreate = ({ loading, disabled, onClickSubmit = () => {}, onClickCancel = () => {} }) => {
   return (
     <div className="base-action-create">
         <BaseAction>
             <BaseButton
+                loading={loading}
+                disabled={loading || disabled}
+                type="submit"
                 size="md"
                 color="success"
-                onClick={(e) => onClickCreated(e)}
+                onClick={(e) => onClickSubmit(e)}
             >
                 Create
             </BaseButton>
             <BaseButton
+                disabled={loading || disabled}
+                type="reset"
                 size="md"
                 color="secondary"
                 onClick={(e) => onClickCancel(e)}
