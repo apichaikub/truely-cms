@@ -51,6 +51,8 @@ const FormProductCreate = ({ control, errors, formState, onSubmit, onCancel }) =
             />
           </CFormGroup>
           <BaseActionSubmit
+            submitText="Create"
+            cancelText="Cancel"
             loading={formState.isValid && formState.isSubmitted}
             disabled={!formState.isDirty}
             onClickCancel={onCancel}
