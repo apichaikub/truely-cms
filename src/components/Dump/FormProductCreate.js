@@ -9,15 +9,8 @@ import {
 } from '@coreui/react'
 import BaseInput from '../Base/BaseInput'
 import BaseActionCreate from '../Base/BaseActionCreate'
-import { cleanObj } from '../../utils'
 
-const FormProductCreate = ({ control, errors, formState, reset, onSubmit }) => {
-  const handleClickCancel = () => {
-    const formValues = control.getValues()
-    const cleanForm = cleanObj(formValues, "")
-    reset(cleanForm)
-  }
-
+const FormProductCreate = ({ control, errors, formState, onSubmit, onCancel }) => {
   return (
     <CRow>
       <CCol>
@@ -60,7 +53,7 @@ const FormProductCreate = ({ control, errors, formState, reset, onSubmit }) => {
           <BaseActionCreate
             loading={formState.isValid && formState.isSubmitted}
             disabled={!formState.isDirty}
-            onClickCancel={handleClickCancel}
+            onClickCancel={onCancel}
           />
         </CForm>
       </CCol>

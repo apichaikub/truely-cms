@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { cleanObj } from '../utils'
 import Layout from '../components/Layout'
 import FormProductCreate from '../components/Dump/FormProductCreate'
 
@@ -10,14 +11,20 @@ const ProductsCreate = () => {
     console.log('form', form)
   }
 
+  const handleCancel = () => {
+    const formValues = control.getValues()
+    const cleanForm = cleanObj(formValues, "")
+    reset(cleanForm)
+  }
+
   return (
     <Layout>
       <FormProductCreate
         control={control}
         errors={errors}
         formState={formState}
-        reset={reset}
         onSubmit={handleSubmit(onCreateProduct)}
+        onCancel={handleCancel}
       />
     </Layout>
   )
