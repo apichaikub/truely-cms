@@ -17,22 +17,24 @@ const BaseActionSubmit = (props) => {
     <div className="base-action-create">
       <BaseAction>
         <BaseButton
-          text={submitText}
           loading={loading}
           disabled={loading || disabled}
           type="submit"
           size="md"
           color="success"
           onClick={(e) => onClickSubmit(e)}
-        />
+        >
+          { submitText }
+        </BaseButton>
         <BaseButton
-          text={cancelText}
           disabled={loading || disabled}
           type="reset"
           size="md"
           color="secondary"
           onClick={(e) => onClickCancel(e)}
-        />
+        >
+          { cancelText }
+        </BaseButton>
       </BaseAction>
     </div>
   )

@@ -5,7 +5,7 @@ import BaseLoadingSpinner from './BaseLoadingSpinner'
 
 const WrapperComponent = ({ text = "", loading = false, children, ...rest }) => (
   <CButton disabled={loading} {...rest}>
-    { text || children }
+    { children }
   </CButton>
 )
 
