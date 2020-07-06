@@ -1,4 +1,4 @@
-import { ROUTER_PATH } from '../../enum'
+import { ROUTER_PATH } from './enum'
 
 const { ENUM: ROUTER } = ROUTER_PATH
 
