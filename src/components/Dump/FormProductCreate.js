@@ -5,9 +5,9 @@ import {
   CRow,
   CFormGroup,
   CLabel,
-  CTextarea,
 } from '@coreui/react'
 import BaseInput from '../Base/BaseInput'
+import BaseTextarea from '../Base/BaseTextarea'
 import BaseActionSubmit from '../Base/BaseActionSubmit'
 
 const FormProductCreate = ({ control, errors, formState, onSubmit, onCancel }) => {
@@ -31,10 +31,15 @@ const FormProductCreate = ({ control, errors, formState, onSubmit, onCancel }) =
           </CFormGroup>
           <CFormGroup>
             <CLabel htmlFor="nf-detail">Details</CLabel>
-            <CTextarea
+            <BaseTextarea
               id="nf-detail"
               name="detail"
               rows="5"
+              defaultValue=""
+              control={control}
+              rules={{required: true}}
+              invalid={!!errors.detail}
+              invalidMessage="This field is required"
             />
           </CFormGroup>
           <CFormGroup>
@@ -47,13 +52,12 @@ const FormProductCreate = ({ control, errors, formState, onSubmit, onCancel }) =
               max="5"
               defaultValue=""
               control={control}
-              rules={{required: true}}
             />
           </CFormGroup>
           <BaseActionSubmit
             submitText="Create"
             cancelText="Cancel"
-            loading={formState.isValid && formState.isSubmitted}
+            loading={formState.isSubmitting}
             disabled={!formState.isDirty}
             onClickCancel={onCancel}
           />

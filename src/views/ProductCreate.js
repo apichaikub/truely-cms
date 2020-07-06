@@ -5,14 +5,19 @@ import Layout from '../components/Layout'
 import FormProductCreate from '../components/Dump/FormProductCreate'
 
 const ProductsCreate = () => {
-  const { control, errors, formState, reset, handleSubmit } = useForm()
+  const { control, errors, formState, getValues, reset, handleSubmit } = useForm()
 
-  const onCreateProduct = (form) => {
-    console.log('form', form)
+  const onCreateProduct = (formValues) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        console.log('formValues', formValues)
+        resolve()
+      }, 5000)
+    })
   }
 
   const handleCancel = () => {
-    const formValues = control.getValues()
+    const formValues = getValues()
     const cleanForm = cleanObj(formValues, "")
     reset(cleanForm)
   }
