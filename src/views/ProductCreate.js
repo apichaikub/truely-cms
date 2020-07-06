@@ -1,21 +1,28 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import serviceApi from '../services/api'
 import { cleanObj } from '../utils'
 import Layout from '../components/Layout'
 import FormProductCreate from '../components/Dump/FormProductCreate'
 
-const ProductsCreate = () => {
+const ProductsCreate = ({ history }) => {
   const { control, errors, formState, getValues, reset, handleSubmit } = useForm()
 
+  // listener function
   const onCreateProduct = (formValues) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        console.log('formValues', formValues)
-        resolve()
-      }, 5000)
+    return new Promise((resolve, reject) => {
+      const params = {
+        name: formValues.name,
+        detail: formValues.detail,
+        rating: formValues.rating,
+      }
+      const fetch = serviceApi.addProducts(params)
+      fetch.then(() => resolve(history.push('/products')))
+      fetch.catch((error) => reject(error))
     })
   }
 
+  // hanler function
   const handleCancel = () => {
     const formValues = getValues()
     const cleanForm = cleanObj(formValues, "")
