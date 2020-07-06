@@ -3,9 +3,9 @@ import { CButton } from '@coreui/react'
 import HocLoading from '../Hoc/HocLoading'
 import BaseLoadingSpinner from './BaseLoadingSpinner'
 
-const WrapperComponent = ({ loading = false, children, ...rest }) => (
+const WrapperComponent = ({ text = "", loading = false, children, ...rest }) => (
   <CButton disabled={loading} {...rest}>
-    { children }
+    { text || children }
   </CButton>
 )
 
