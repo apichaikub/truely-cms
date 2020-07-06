@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { BrowserRouter as Redirect } from "react-router-dom"
-import { meActions } from './store/actions'
+import { BrowserRouter as Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ROUTER_PATH } from './enum'
-import Routers from './Routers'
+import { meActions } from './store/actions'
+import routes from './routes'
+import ProtectedRoute from './ProtectedRoute'
 import './assets/scss/style.scss'
 
 const App = () => {
@@ -36,7 +38,15 @@ const App = () => {
   }
 
   return (
-    <Routers/>
+    <Router>
+      <Switch>
+        {routes.map(({ meta, ...rest }, index) => (
+          meta && meta?.requiredAuth === true
+          ? <ProtectedRoute key={index} roles={meta.roles} {...rest} />
+          : <Route key={index} {...rest} />
+        ))}
+      </Switch>
+    </Router>
   )
 }
 

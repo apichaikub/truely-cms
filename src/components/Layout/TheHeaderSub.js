@@ -1,9 +1,8 @@
 import React from 'react'
 import { CSubheader, CBreadcrumbRouter } from '@coreui/react'
-import routes from './_breadcrumb'
+import routes from '../../routes'
 
 const TheHeaderSub = () => {
-  
   return (
     <CSubheader className="px-3 justify-content-between">
       <CBreadcrumbRouter 
