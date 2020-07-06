@@ -9,13 +9,13 @@ import {
 } from '@coreui/react'
 import BaseInput from '../Base/BaseInput'
 import BaseActionCreate from '../Base/BaseActionCreate'
+import { cleanObj } from '../../utils'
 
 const FormProductCreate = ({ control, errors, formState, reset, onSubmit }) => {
   const handleClickCancel = () => {
-    reset({
-      name: "",
-      rating: "",
-    })
+    const formValues = control.getValues()
+    const cleanForm = cleanObj(formValues, "")
+    reset(cleanForm)
   }
 
   return (
