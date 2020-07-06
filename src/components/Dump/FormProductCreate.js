@@ -8,11 +8,20 @@ import {
   CInput,
   CTextarea,
 } from '@coreui/react'
+import BaseActionCreate from '../Base/BaseActionCreate'
 
 const FormProductCreate = () => {
+  const handleClickCreated = () => {
+    console.log('handleClickCreated')
+  }
+
+  const handleClickCanceled = () => {
+    console.log('handleClickCanceled')
+  }
+
   return (
     <CRow>
-      <CCol sm="12">
+      <CCol>
         <CForm action="" method="post">
           <CFormGroup>
             <CLabel htmlFor="nf-name">Product Name</CLabel>
@@ -41,6 +50,10 @@ const FormProductCreate = () => {
               max="5"
             />
           </CFormGroup>
+          <BaseActionCreate
+            onClickCreated={handleClickCreated}
+            onClickCancel={handleClickCanceled}
+          />
         </CForm>
       </CCol>
     </CRow>

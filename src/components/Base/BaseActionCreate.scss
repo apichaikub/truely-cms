@@ -1,0 +1,9 @@
+.base-action-create {
+  button {
+    margin-right: 15px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
