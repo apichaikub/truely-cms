@@ -6,7 +6,6 @@ import {
   CFormGroup,
   CLabel,
   CTextarea,
-  CButton
 } from '@coreui/react'
 import BaseInput from '../Base/BaseInput'
 import BaseActionCreate from '../Base/BaseActionCreate'
@@ -58,7 +57,6 @@ const FormProductCreate = ({ control, errors, formState, reset, onSubmit }) => {
               rules={{required: true}}
             />
           </CFormGroup>
-          <CButton type="submit">Submit</CButton>
           <BaseActionCreate
             loading={formState.isValid && formState.isSubmitted}
             disabled={!formState.isDirty}
