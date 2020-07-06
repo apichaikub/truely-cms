@@ -24,7 +24,7 @@ export default [
       {
         _tag: 'CSidebarNavItem',
         name: 'Create',
-        to: '/products/create',
+        to: ROUTER.PRODUCT_CREATE,
       },
     ],
   },
