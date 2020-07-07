@@ -47,11 +47,6 @@ export default [
         name: 'List',
         to: ROUTER.USERS,
       },
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'Create',
-        to: '/users/create',
-      },
     ],
   },
 ]
