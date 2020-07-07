@@ -14,7 +14,8 @@ const ProductsCreate = ({ history }) => {
       const params = {
         name: formValues.name,
         detail: formValues.detail,
-        rating: formValues.rating,
+        specifications: [],
+        rating: parseFloat(formValues.rating),
       }
       const fetch = serviceApi.addProducts(params)
       fetch.then(() => resolve(history.push('/products')))
