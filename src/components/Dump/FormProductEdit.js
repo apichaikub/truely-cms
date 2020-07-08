@@ -10,7 +10,7 @@ import BaseInput from '../Base/BaseInput'
 import BaseTextarea from '../Base/BaseTextarea'
 import BaseActionSubmit from '../Base/BaseActionSubmit'
 
-const FormProductCreate = ({ loading, control, errors, formState, productState, setValue, onSubmit, onCancel }) => {
+const FormProductCreate = ({ loading, control, errors, formState, productState, onSubmit, onCancel }) => {
   const {
     name,
     detail,
