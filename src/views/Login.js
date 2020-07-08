@@ -26,7 +26,7 @@ const Login = () => {
 
   // if user is already logged in, then redirect to product pages
   if(authState.loggedin) {
-    return <Redirect to={ROUTER_PATH.ENUM.PRODUCTS} />
+    return <Redirect to={ROUTER_PATH.ENUM.PRODUCT_LIST} />
   }
 
   return (

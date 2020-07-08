@@ -1,10 +1,36 @@
 import { gql } from 'apollo-boost'
 import httpClient from './apollo.client'
 
-export const getProducts = () => httpClient.product.query({
-  query: gql`
-    {
-      products {
+export const getProducts = () => {
+  const query = gql`{
+    products {
+      productId,
+      name,
+      detail,
+      specifications,
+      rating,
+      imageSmall,
+      imageMedium,
+      imageLarge,
+      createdAt,
+      updatedAt
+    }
+  }`
+
+  return httpClient.product.query({
+    fetchPolicy: 'no-cache',
+    query,
+  })
+}
+
+export const getProduct = (params) => {
+  const variables = {
+    id: params.id,
+  }
+
+  const query = gql`
+    query ($id: ID!) {
+      product(id: $id) {
         productId,
         name,
         detail,
@@ -14,27 +40,37 @@ export const getProducts = () => httpClient.product.query({
         imageMedium,
         imageLarge,
         createdAt,
-        updatedAt
+        updatedAt,
       }
     }
   `
-})
+
+  return httpClient.product.query({
+    fetchPolicy: 'no-cache',
+    variables,
+    query,
+  })
+}
 
 export const addProducts = (params) => {
-  const {
-    name,
-    detail,
-    rating,
-  } = params
+  const variables = {
+    name: params.name,
+    detail: params.detail,
+    specifications: params.specifications,
+    rating: params.rating,
+    imageSmall: null,
+    imageMedium: null,
+    imageLarge: null,
+  }
 
   const mutation = gql`
-    mutation {
+    mutation ($name: String!, $detail: String!, $specifications: [String!], $rating: Float) {
       createProduct (
         data: [{
-          name: "${name}",
-          detail: "${detail}",
-          specifications: [],
-          rating: ${rating},
+          name: $name,
+          detail: $detail,
+          specifications: $specifications,
+          rating: $rating,
           imageSmall: null,
           imageMedium: null,
           imageLarge: null,
@@ -46,7 +82,61 @@ export const addProducts = (params) => {
         }
       }
     }
-  `;
+  `
 
-  return httpClient.product.mutate({ mutation })
+  return httpClient.product.mutate({
+    variables,
+    mutation,
+  })
+}
+
+export const editProducts = (params) => {
+  const variables = {
+    id: params.id,
+    name: params.name,
+    detail: params.detail,
+    specifications: params.specifications,
+    rating: params.rating,
+    imageSmall: null,
+    imageMedium: null,
+    imageLarge: null,
+  }
+
+  const mutation = gql`
+    mutation ($id: String!, $name: String!, $detail: String!, $specifications: [String!], $rating: Float) {
+      updateProduct (
+        data: [{
+          productId: $id,
+          name: $name,
+          detail: $detail,
+          specifications: $specifications,
+          rating: $rating,
+          imageSmall: null,
+          imageMedium: null,
+          imageLarge: null,
+        }]
+      )
+    }
+  `
+
+  return httpClient.product.mutate({ variables, mutation })
+}
+
+export const deleteProducts = (params) => {
+  const variables = {
+    id: params.id,
+  }
+
+  const mutation = gql`
+    mutation ($id: ID!) {
+      deleteProduct (
+        ids: [$id]
+      )
+    }
+  `
+
+  return httpClient.product.mutate({
+    variables,
+    mutation,
+  })
 }

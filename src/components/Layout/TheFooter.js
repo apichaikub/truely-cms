@@ -14,7 +14,7 @@ const TheFooter = () => {
       </div>
       <div className="mfs-auto">
         <span className="mr-1">Developed by</span>
-        <a href="https://apichai.me" target="_blank" rel="noopener noreferrer">Apichai (Chai) Densamute</a>
+        Apichai (Chai) Densamute
       </div>
     </CFooter>
   )

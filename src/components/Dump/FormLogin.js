@@ -82,7 +82,7 @@ const FormLogin = ({ authState, control, errors, submited, onSubmit }) => (
       <CRow className="justify-content-center text-center mt-4">
         <CCol md="6">
           <span className="mr-1">Developed by</span>
-          <a href="https://apichai.me" target="_blank" rel="noopener noreferrer">Apichai (Chai) Densamute</a>
+          Apichai (Chai) Densamute
         </CCol>
       </CRow>
     </CContainer>

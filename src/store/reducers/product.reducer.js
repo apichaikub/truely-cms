@@ -15,6 +15,7 @@ const initialState = {
 }
 
 const productReducer = (state = initialState, action) => {
+  // get products
   switch(action.type) {
     case productContants.GET_PRODUCTS_REQUEST:
       return {
@@ -25,7 +26,6 @@ const productReducer = (state = initialState, action) => {
           data: [],
         }
       }
-
     case productContants.GET_PRODUCTS_SUCCESS:
       return {
         ...state,
@@ -35,12 +35,40 @@ const productReducer = (state = initialState, action) => {
           data: productTransforms.list(action.payload),
         },
       }
-
     case productContants.GET_PRODUCTS_FAILURE:
       return {
         ...state,
         list: {
           ...state.list,
+          loading: false,
+          error: action.payload.message,
+        },
+      }
+    
+    // get a product
+    case productContants.GET_PRODUCT_REQUEST:
+      return {
+        ...state,
+        one: {
+          loading: true,
+          error: null,
+          data: {},
+        }
+      }
+    case productContants.GET_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        one: {
+          ...state.one,
+          loading: false,
+          data: productTransforms.one(action.payload),
+        },
+      }
+    case productContants.GET_PRODUCT_FAILURE:
+      return {
+        ...state,
+        one: {
+          ...state.one,
           loading: false,
           error: action.payload.message,
         },
