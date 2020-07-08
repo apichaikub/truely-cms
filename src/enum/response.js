@@ -6,6 +6,7 @@ export const RESPONSE_KEY = Object.freeze({
       DATA: "data",
       ME: "me",
       PRODUCTS: "products",
+      PRODUCT: "product",
     },
     get values() {
       return Object.values(this.ENUM)

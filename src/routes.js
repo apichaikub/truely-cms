@@ -2,6 +2,7 @@ import { ROUTER_PATH, ROLE_USER, META_ROUTE } from './enum'
 import Login from './views/Login'
 import Products from './views/Products'
 import ProductCreate from './views/ProductCreate'
+import ProductUpdate from './views/ProductEdit'
 import Users from './views/Users'
 
 const { ENUM: PATH } = ROUTER_PATH
@@ -36,6 +37,16 @@ export default [
     name: 'Create',
     exact: true,
     component: ProductCreate,
+    meta: {
+      [META.REQUIRED_AUTH]: true,
+      [META.ROLES]: [ROLE.ADMIN],
+    },
+  },
+  {
+    path: `${PATH.PRODUCT_EDIT}/:id`,
+    name: 'Update',
+    exact: true,
+    component: ProductUpdate,
     meta: {
       [META.REQUIRED_AUTH]: true,
       [META.ROLES]: [ROLE.ADMIN],

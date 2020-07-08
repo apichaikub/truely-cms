@@ -21,6 +21,25 @@ const meActions = {
       }
     }
   },
+
+  requestGetProduct: ({ id }) => {
+    const request = () => ({ type: productContants.GET_PRODUCT_REQUEST })
+    const success = (payload) => ({ type: productContants.GET_PRODUCT_SUCCESS, payload })
+    const failure = (payload) => ({ type: productContants.GET_PRODUCT_FAILURE, payload })
+
+    return async (dispatch) => {
+      try {
+        dispatch(request())
+
+        const { data } = await serviceApi.getProduct({ id })
+        const payload = data[RESPONSE_KEY.ENUM.PRODUCT]
+        dispatch(success(payload))
+      } catch(error) {
+        const payload = {message: error.message}
+        dispatch(failure(payload))
+      }
+    }
+  },
 }
 
 export default meActions

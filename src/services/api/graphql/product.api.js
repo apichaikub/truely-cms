@@ -20,6 +20,31 @@ export const getProducts = () => httpClient.product.query({
   `
 })
 
+export const getProduct = (params) => {
+  const variables = {
+    id: params.id,
+  }
+
+  const query = gql`
+    query ($id: ID!) {
+      product(id: $id) {
+        productId,
+        name,
+        detail,
+        specifications,
+        rating,
+        imageSmall,
+        imageMedium,
+        imageLarge,
+        createdAt,
+        updatedAt,
+      }
+    }
+  `
+
+  return httpClient.product.query({ variables, query })
+}
+
 export const addProducts = (params) => {
   const variables = {
     name: params.name,
@@ -50,7 +75,39 @@ export const addProducts = (params) => {
         }
       }
     }
-  `;
+  `
+
+  return httpClient.product.mutate({ variables, mutation })
+}
+
+export const editProducts = (params) => {
+  const variables = {
+    id: params.id,
+    name: params.name,
+    detail: params.detail,
+    specifications: params.specifications,
+    rating: params.rating,
+    imageSmall: null,
+    imageMedium: null,
+    imageLarge: null,
+  }
+
+  const mutation = gql`
+    mutation ($id: String!, $name: String!, $detail: String!, $specifications: [String!], $rating: Float) {
+      updateProduct (
+        data: [{
+          productId: $id,
+          name: $name,
+          detail: $detail,
+          specifications: $specifications,
+          rating: $rating,
+          imageSmall: null,
+          imageMedium: null,
+          imageLarge: null,
+        }]
+      )
+    }
+  `
 
   return httpClient.product.mutate({ variables, mutation })
 }

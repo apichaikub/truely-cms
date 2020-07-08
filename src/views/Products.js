@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { productActions } from '../store/actions'
 import { mapTable } from '../helpers/table'
-import { TABLE_PRODUCT_POINTER } from '../enum'
+import { TABLE_PRODUCT_POINTER, ROUTER_PATH } from '../enum'
 import Layout from '../components/Layout'
 import TableProducts from '../components/Dump/TableProducts'
 import BaseModalConfirmDelete from '../components/Base/BaseModalConfirmDelete'
 
-const Products = () => {
+const Products = ({ history }) => {
   const dispatch = useDispatch()
   const [modal, setModal] = useState({ show: false, id: null })
   const productState = useSelector(state => state.product.list)
 
   // handler function
   const handleClickedView = (id) => {
-    console.log('handleClickedView', id)
+    history.push(`${ROUTER_PATH.ENUM.PRODUCT_EDIT}/${id}`)
   }
 
   const handleClickedDelete = (id) => {
