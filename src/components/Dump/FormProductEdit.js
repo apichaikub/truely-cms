@@ -12,7 +12,6 @@ import BaseActionSubmit from '../Base/BaseActionSubmit'
 
 const FormProductCreate = ({ loading, control, errors, formState, productState, setValue, onSubmit, onCancel }) => {
   const {
-    productId,
     name,
     detail,
     rating,
