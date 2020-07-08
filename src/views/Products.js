@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import serviceApi from '../services/api'
 import { productActions } from '../store/actions'
 import { mapTable } from '../helpers/table'
 import { TABLE_PRODUCT_POINTER, ROUTER_PATH } from '../enum'
@@ -10,6 +11,7 @@ import BaseModalConfirmDelete from '../components/Base/BaseModalConfirmDelete'
 const Products = ({ history }) => {
   const dispatch = useDispatch()
   const [modal, setModal] = useState({ show: false, id: null })
+  const [deleteLoading, setDeleteLoading] = useState(false)
   const productState = useSelector(state => state.product.list)
 
   // handler function
@@ -22,7 +24,22 @@ const Products = ({ history }) => {
   }
 
   const handleConfirmed = () => {
-    console.log('handleConfirmed', modal.id)
+    setDeleteLoading(true)
+
+    // call to graphql to delete a product
+    const fetch = serviceApi.deleteProducts({
+      id: modal.id
+    })
+
+    fetch.then(() => {
+      setModal({ ...modal, show: false })
+      setDeleteLoading(false)
+      dispatch(productActions.requestGetProducts())
+    })
+
+    fetch.catch((err) => {
+      // TODO: handle error
+    })
   }
 
   const handleToggleModal = ()=>{
@@ -30,6 +47,7 @@ const Products = ({ history }) => {
   }
 
   useEffect(() => {
+    // call to graphql to get products
     dispatch(productActions.requestGetProducts())
   }, [dispatch])
 
@@ -44,6 +62,7 @@ const Products = ({ history }) => {
         />
       </Layout>
       <BaseModalConfirmDelete
+        loading={deleteLoading}
         show={modal.show}
         onToggle={handleToggleModal}
         onConfirmed={handleConfirmed}

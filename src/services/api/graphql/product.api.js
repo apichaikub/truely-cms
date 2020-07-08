@@ -1,24 +1,27 @@
 import { gql } from 'apollo-boost'
 import httpClient from './apollo.client'
 
-export const getProducts = () => httpClient.product.query({
-  query: gql`
-    {
-      products {
-        productId,
-        name,
-        detail,
-        specifications,
-        rating,
-        imageSmall,
-        imageMedium,
-        imageLarge,
-        createdAt,
-        updatedAt
-      }
+export const getProducts = () => {
+  const query = gql`{
+    products {
+      productId,
+      name,
+      detail,
+      specifications,
+      rating,
+      imageSmall,
+      imageMedium,
+      imageLarge,
+      createdAt,
+      updatedAt
     }
-  `
-})
+  }`
+
+  return httpClient.product.query({
+    fetchPolicy: 'no-cache',
+    query,
+  })
+}
 
 export const getProduct = (params) => {
   const variables = {
@@ -42,7 +45,11 @@ export const getProduct = (params) => {
     }
   `
 
-  return httpClient.product.query({ variables, query })
+  return httpClient.product.query({
+    fetchPolicy: 'no-cache',
+    variables,
+    query,
+  })
 }
 
 export const addProducts = (params) => {
@@ -77,7 +84,10 @@ export const addProducts = (params) => {
     }
   `
 
-  return httpClient.product.mutate({ variables, mutation })
+  return httpClient.product.mutate({
+    variables,
+    mutation,
+  })
 }
 
 export const editProducts = (params) => {
@@ -110,4 +120,23 @@ export const editProducts = (params) => {
   `
 
   return httpClient.product.mutate({ variables, mutation })
+}
+
+export const deleteProducts = (params) => {
+  const variables = {
+    id: params.id,
+  }
+
+  const mutation = gql`
+    mutation ($id: ID!) {
+      deleteProduct (
+        ids: [$id]
+      )
+    }
+  `
+
+  return httpClient.product.mutate({
+    variables,
+    mutation,
+  })
 }

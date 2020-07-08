@@ -2,7 +2,7 @@ import React from 'react'
 import { CModal, CModalHeader, CModalFooter } from '@coreui/react'
 import BaseButton from '../Base/BaseButton'
 
-const Products = ({ show = false, onToggle = () => {}, onConfirmed = () => {}, ...rest }) => {
+const Products = ({ loading = false, show = false, onToggle = () => {}, onConfirmed = () => {}, ...rest }) => {
   return (
     <CModal
       show={show}
@@ -12,6 +12,7 @@ const Products = ({ show = false, onToggle = () => {}, onConfirmed = () => {}, .
       <CModalHeader closeButton>Do you want to delete this?</CModalHeader>
       <CModalFooter>
         <BaseButton
+          loading={loading}
           size="md"
           color="danger"
           onClick={onConfirmed}
