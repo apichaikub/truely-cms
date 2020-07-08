@@ -23,19 +23,7 @@ const TheHeaderDropdown = () => {
           />
         </div>
       </CDropdownToggle>
-      <CDropdownMenu className="pt-0" placement="bottom-end">
-        <CDropdownItem
-          header
-          tag="div"
-          color="light"
-          className="text-center"
-        >
-          <strong>Settings</strong>
-        </CDropdownItem>
-        <CDropdownItem>
-          <CIcon name="cil-user" className="mfe-2" />Profile
-        </CDropdownItem>
-        <CDropdownItem divider />
+      <CDropdownMenu placement="bottom-end">
         <CDropdownItem onClick={() => dispatch(authActions.logout())}>
           <CIcon name="cil-lock-locked" className="mfe-2" /> 
           Logout
