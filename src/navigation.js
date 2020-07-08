@@ -28,25 +28,4 @@ export default [
       },
     ],
   },
-
-  /**
-   * User  Management
-   */
-  {
-      _tag: 'CSidebarNavTitle',
-      _children: ['User Management']
-  },
-  {
-    _tag: 'CSidebarNavDropdown',
-    name: 'User',
-    route: ROUTER.USERS,
-    icon: 'cil-user',
-    _children: [
-      {
-        _tag: 'CSidebarNavItem',
-        name: 'List',
-        to: ROUTER.USERS,
-      },
-    ],
-  },
 ]
