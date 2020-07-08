@@ -13,13 +13,13 @@ export default [
   {
     _tag: 'CSidebarNavDropdown',
     name: 'Product',
-    route: ROUTER.PRODUCTS,
+    route: ROUTER.PRODUCT_LIST,
     icon: 'cil-3d',
     _children: [
       {
         _tag: 'CSidebarNavItem',
         name: 'List',
-        to: ROUTER.PRODUCTS,
+        to: ROUTER.PRODUCT_LIST,
       },
       {
         _tag: 'CSidebarNavItem',

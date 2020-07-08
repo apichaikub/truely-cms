@@ -25,7 +25,7 @@ const ProductsCreate = ({ history, match: { params }}) => {
         rating: parseFloat(formValues.rating),
       }
       const fetch = serviceApi.editProducts(params)
-      fetch.then(() => resolve(history.push(ROUTER_PATH.ENUM.PRODUCTS)))
+      fetch.then(() => resolve(history.push(ROUTER_PATH.ENUM.PRODUCT_LIST)))
       fetch.catch((error) => reject(error))
     })
   }

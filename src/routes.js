@@ -1,6 +1,6 @@
 import { ROUTER_PATH, ROLE_USER, META_ROUTE } from './enum'
 import Login from './views/Login'
-import Products from './views/Products'
+import ProductList from './views/ProductList'
 import ProductCreate from './views/ProductCreate'
 import ProductUpdate from './views/ProductEdit'
 import Users from './views/Users'
@@ -23,10 +23,10 @@ export default [
     component: Login,
   },
   {
-    path: PATH.PRODUCTS,
+    path: PATH.PRODUCT_LIST,
     name: 'Products',
     exact: true,
-    component: Products,
+    component: ProductList,
     meta: {
       [META.REQUIRED_AUTH]: true,
       [META.ROLES]: [ROLE.ADMIN],

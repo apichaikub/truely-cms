@@ -19,7 +19,7 @@ const ProductsCreate = ({ history }) => {
         rating: parseFloat(formValues.rating),
       }
       const fetch = serviceApi.addProducts(params)
-      fetch.then(() => resolve(history.push(ROUTER_PATH.ENUM.PRODUCTS)))
+      fetch.then(() => resolve(history.push(ROUTER_PATH.ENUM.PRODUCT_LIST)))
       fetch.catch((error) => reject(error))
     })
   }
